@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IPL Ticket Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🏏 IPL Ticket Booking</h1>
+
+        <form action="/book" method="POST">
+            <label>Your Name</label>
+            <input type="text" name="name" required>
+
+            <label>Select Match</label>
+            <select name="matchId">
+                <option value="1">CSK vs MI - Chepauk - ₹1500</option>
+                <option value="2">RCB vs KKR - Chinnaswamy - ₹1800</option>
+                <option value="3">SRH vs GT - Hyderabad - ₹1200</option>
+            </select>
+
+            <label>Number of Tickets</label>
+            <input type="number" name="tickets" min="1" required>
+
+            <button type="submit">Book Now</button>
+        </form>
+    </div>
+
+</body>
+</html>
