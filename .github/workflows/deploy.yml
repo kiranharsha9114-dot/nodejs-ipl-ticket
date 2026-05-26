@@ -1,0 +1,26 @@
+name: Deploy To EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Create SSH Key
+        run: |
+          echo "${{ secrets.EC2_SSH_KEY }}" > private_key.pem
+          chmod 600 private_key.pem
+
+      - name: Connect To EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no \
+          -i private_key.pem \
+          ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} \
+          "echo Connected Successfully"
